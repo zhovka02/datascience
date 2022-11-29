@@ -97,7 +97,7 @@ def get_all_words_by_month():
             print(f"i={index} processing {doc.titel}")
             for word in processed.split(" "):
                 word = word.lower()
-                if word not in excluded and len(word) >= 3:  # mindestens 3 Buchstaben und nicht ausgeschlossen
+                if len(word) >= 2 and word not in excluded:  # mindestens 3 Buchstaben und nicht ausgeschlossen
                     yield month, word.lower()
 
 
