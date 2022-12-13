@@ -1,6 +1,7 @@
 import re
 
 import protocol
+from nltk.stem.snowball import SnowballStemmer
 
 
 min_count = 3000
@@ -88,6 +89,7 @@ def get_all_month_ids():
 
 def get_all_words_by_month():
     excluded = get_excluded_words()
+    stemmer = SnowballStemmer("german")
     index = 0
     for doc in protocol.all_protocols():
         if "Deutschen Bundestages" in doc.titel:  # alle, Dokumente ausschließen, die nicht vom Bundestag kommen
@@ -98,6 +100,7 @@ def get_all_words_by_month():
             for word in processed.split(" "):
                 word = word.lower()
                 if len(word) >= 2 and word not in excluded:  # mindestens 3 Buchstaben und nicht ausgeschlossen
+                    word = stemmer.stem(word) # Wort auf den Wortstamm zurückführen
                     yield month, word.lower()
 
 
