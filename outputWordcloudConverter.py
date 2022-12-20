@@ -66,6 +66,7 @@ def string_to_date(string):
 
 def main():
     dict = trim_dict_to_time_span(inputFile, startTime, endTime, True)
+    dict.sort_values(by="result")
     dict.to_csv(outputFile, index=False, header=False)
 
 
