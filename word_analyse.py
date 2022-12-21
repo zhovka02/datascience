@@ -101,7 +101,7 @@ def get_all_words_by_month():
                 word = word.lower()
                 if len(word) >= 2 and word not in excluded:  # mindestens 3 Buchstaben und nicht ausgeschlossen
                     word = stemmer.stem(word) # Wort auf den Wortstamm zurückführen
-                    yield month, word.lower()
+                    yield month, word
 
 
 def get_excluded_words():
