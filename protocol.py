@@ -24,12 +24,14 @@ class Month:
         self.month = month
 
 
+# Extrahiert alle Protokolle
 def all_protocols():
     for data in all_protocol_data():
         for protocol in extract_protocols(data):
             yield protocol
 
 
+# Extrahiert Protokolle aus einem heruntergeladenen JSON-Dokument
 def extract_protocols(str_data):
     data = json.loads(str_data)
     for document in data["documents"]:
@@ -38,6 +40,7 @@ def extract_protocols(str_data):
             yield Protocol(document["dokumentnummer"], datum, "", document["titel"], document["text"])
 
 
+# Liest alle heruntergeladenen Dateien ein
 def all_protocol_data():
     directory = "data"
     for path in os.listdir(directory):
