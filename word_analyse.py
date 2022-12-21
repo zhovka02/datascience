@@ -121,8 +121,8 @@ def preprocess_text(title, text):
     text = text.replace("-\n", "")  # Gebrochene Wörter zusammensetzen
     text = text.replace("\n", " ")  # Zeilenumbrüche eliminieren
     text = re.sub("\\([^)]*\\)", "", text)  # alle Ausdrücke in Klammern entfernen z.B. (Beifall von der SPD)
-    text = re.sub("Deutscher Bundestag . \\d+\\. Wahlperiode . \\d+\\. Sitzung\\. "
-                  "Berlin, \\w+, den \\d+\\. \\w+ \\d\\d\\d\\d", "", text)  # Kopfzeilen eliminieren
+    text = re.sub("Deutscher Bundestag . \\d+ ?\\. Wahlperiode . \\d+ ?\\. Sitzung ?\\. Berlin, "
+                  "\\w+, den \\d+ ?\\. \\w+ \\d\\d\\d\\d", "", text)  # Kopfzeilen eliminieren
     text = re.sub("[^a-zA-ZöäüÖÄÜß\\- ]", "", text)  # Sonderzeichen eliminieren
 
     return text
